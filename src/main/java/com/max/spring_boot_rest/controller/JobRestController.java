@@ -3,10 +3,7 @@ package com.max.spring_boot_rest.controller;
 import com.max.spring_boot_rest.model.JobPost;
 import com.max.spring_boot_rest.service.JobService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,8 +20,13 @@ public class JobRestController {
     }
 
     @GetMapping("jobPost/{postId}")
-    public JobPost getJob(@PathVariable int postId) {
+    public JobPost getJob(@PathVariable("postId") int postId) {
         return jobService.getJob(postId);
+    }
+
+    @PostMapping
+    public void addJob(@RequestBody JobPost jobPost) {
+        jobService.addJob(jobPost);
     }
 
 }
