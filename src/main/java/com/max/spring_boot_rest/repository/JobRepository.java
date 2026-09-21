@@ -50,4 +50,12 @@ public class JobRepository {
             }
         }
     }
+
+    public void deleteJob(int postId) {
+        for (JobPost job: jobs) {
+            if(job.getPostId() == postId) {
+                jobs.remove(postId);
+            }
+        }
+    }
 }
